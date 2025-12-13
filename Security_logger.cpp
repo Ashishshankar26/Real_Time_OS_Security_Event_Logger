@@ -26,12 +26,14 @@ vector<string> keywords = {
     "polkit"
 };
 
+//function to convert any security logs to lower case to better detect any anomaly.
 
 string toLower(string s) {
     transform(s.begin(), s.end(), s.begin(), ::tolower);
     return s;
 }
 
+//function to detect if the logs in the system is a security log.
 
 bool isSecurityLine(const string& line) {
     string lower = toLower(line);
@@ -41,6 +43,7 @@ bool isSecurityLine(const string& line) {
     return false;
 }
 
+// event generator structure.
 
 struct Event {
     string message;
@@ -52,6 +55,8 @@ Event parseEvent(const string& line) {
     return e;
 }
 
+
+// function to scan the security_log.txt files.
 void scanFromFile() {
     ifstream in(inputFile);
     ofstream out(outputFile, ios::app);
