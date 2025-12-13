@@ -1,0 +1,7 @@
+bool isSecurityLine(const string& line) {
+    string lower = toLower(line);
+    for (const string& k : keywords) {
+        if (lower.find(k) != string::npos) return true;
+    }
+    return false;
+}
