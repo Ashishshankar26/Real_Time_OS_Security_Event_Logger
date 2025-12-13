@@ -1,0 +1,19 @@
+void runProgram() {
+    while (true) {
+        cout << "\n===== REAL OS SECURITY LOGGER =====\n";
+        cout << "1. Scan exported system logs (system_logs.txt)\n";
+        cout << "2. Generate summary report\n";
+        cout << "3. Real-time monitoring (journalctl)\n";
+        cout << "4. Exit\n";
+        cout << "Choose option: ";
+
+        int choice;
+        cin >> choice;
+
+        if (choice == 1) scanFromFile();
+        else if (choice == 2) generateReport();
+        else if (choice == 3) monitorRealtime();
+        else if (choice == 4) break;
+        else cout << "Invalid choice.\n";
+    }
+}
