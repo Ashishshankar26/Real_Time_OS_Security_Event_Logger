@@ -33,6 +33,24 @@ string toLower(string s) {
 }
 
 
+bool isSecurityLine(const string& line) {
+    string lower = toLower(line);
+    for (const string& k : keywords) {
+        if (lower.find(k) != string::npos) return true;
+    }
+    return false;
+}
+
+
+struct Event {
+    string message;
+};
+
+Event parseEvent(const string& line) {
+    Event e;
+    e.message = line;
+    return e;
+}
 
 
 
