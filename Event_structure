@@ -1,0 +1,9 @@
+struct Event {
+    string message;
+};
+
+Event parseEvent(const string& line) {
+    Event e;
+    e.message = line;
+    return e;
+}
