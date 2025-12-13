@@ -27,6 +27,18 @@ vector<string> keywords = {
 };
 
 
+string toLower(string s) {
+    transform(s.begin(), s.end(), s.begin(), ::tolower);
+    return s;
+}
+
+
+
+
+
+
+
+
 
 void runProgram();
 
