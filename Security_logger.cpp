@@ -84,6 +84,31 @@ void scanFromFile() {
     cout << "Saved to: " << outputFile << endl;
 }
 
+//security event summary generator function.
+
+void generateReport() {
+    ifstream in(outputFile);
+    if (!in.is_open()) {
+        cout << "No security events logged yet." << endl;
+        return;
+    }
+
+    cout << "\n--- Security Events Report ---\n";
+
+    string line;
+    int total = 0;
+
+    while (getline(in, line)) {
+        if (!line.empty()) total++;
+    }
+
+    cout << "Total Security Events Detected (all scans): " << total << endl;
+}
+
+
+
+
+
 
 
 
