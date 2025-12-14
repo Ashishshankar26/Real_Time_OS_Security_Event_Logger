@@ -107,6 +107,34 @@ void generateReport() {
 
 
 
+//Real time logs monitoring function.
+
+void monitorRealtime() {
+    FILE* pipe = popen("journalctl -o short -f", "r");
+    if (!pipe) {
+        cout << "Cannot run journalctl. Try: sudo ./logger" << endl;
+        return;
+    }
+
+    cout << "\n--- Real-Time OS Security Monitoring ---\n";
+    cout << "Press Ctrl+C to stop.\n\n";
+
+    char buffer[4096];
+
+    while (fgets(buffer, sizeof(buffer), pipe)) {
+        string line(buffer);
+        if (isSecurityLine(line)) {
+            Event e = parseEvent(line);
+            cout << "[SECURITY] " << e.message;
+        }
+    }
+
+    pclose(pipe);
+}
+
+
+
+
 
 
 
